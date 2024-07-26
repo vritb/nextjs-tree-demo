@@ -16,6 +16,23 @@ export function FilesystemItem({ node, isRoot }: { node: Node, isRoot:boolean })
   return (
     <li key={node.name}>
       <span className="flex items-center gap-1.5 py-1">
+        {node.nodes && node.nodes.length > 0 && (
+          <button onClick={() => setIsOpen(!isOpen)} className="p-1 -m-1">
+            <ChevronRightIcon
+              className={`size-4 text-gray-500 ${isOpen ? 'rotate-90' : ''}`}
+            />
+          </button>
+        )}
+
+        {node.nodes ? (
+          <FolderIcon
+            className={`size-6 text-sky-500 ${
+              node.nodes.length === 0 ? 'ml-[22px]' : ''
+            }`}
+          />
+        ) : (
+          <DocumentIcon className="ml-[22px] size-6 text-gray-900" />
+        )}
         {node.name}
       </span>
 
