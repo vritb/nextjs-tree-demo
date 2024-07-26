@@ -1,23 +1,15 @@
-import { FilesystemItem } from './filesystem-item';
+import Node from './filesystem-types'; 
+import FilesystemTree from './filesystem-tree';
 import { FilesystemItemAnimated } from './filesystem.-item-animated';
 
-  export default function Page() {
-    return (
-      <ul>
-        {
-        nodes.map((node) => (
-          <FilesystemItem isRoot={true} node={node} key={node.name} />
-        ))}
-      </ul>
-    );
-  }
-  
-  type Node = {
-    name: string;
-    nodes?: Node[];
-  };
-  
-  const nodes: Node[] = [
+export default function Page() {
+  return (
+    <FilesystemTree tree={tree}/>
+  );
+}
+
+
+const tree: Node[] = [
     {
       name: 'Home',
       nodes: [

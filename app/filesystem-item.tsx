@@ -4,13 +4,10 @@
 import { ChevronRightIcon } from '@heroicons/react/16/solid';
 import { DocumentIcon, FolderIcon } from '@heroicons/react/24/solid';
 import { useState } from 'react';
+import type Node from './filesystem-types';
 
-type Node = {
-  name: string;
-  nodes?: Node[];
-};
 
-export function FilesystemItem({ node, isRoot }: { node: Node, isRoot:boolean }) {
+export function FilesystemItem({ node}: { node: Node}) {
   let [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -36,10 +33,10 @@ export function FilesystemItem({ node, isRoot }: { node: Node, isRoot:boolean })
         {node.name}
       </span>
 
-      {(isOpen || isRoot) && (
+      {isOpen && (
         <ul className="pl-6">
           {node.nodes?.map((node) => (
-            <FilesystemItem node={node} isRoot={false} key={node.name} />
+            <FilesystemItem node={node} key={node.name} />
           ))}
         </ul>
       )}

@@ -5,11 +5,7 @@ import { ChevronRightIcon } from '@heroicons/react/16/solid';
 import { DocumentIcon, FolderIcon } from '@heroicons/react/24/solid';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
-
-type Node = {
-  name: string;
-  nodes?: Node[];
-};
+import Node from './filesystem-types';
 
 export function FilesystemItemAnimated({ node }: { node: Node }) {
   let [isOpen, setIsOpen] = useState(false);
